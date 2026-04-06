@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  n8n:
+    image: n8nio/n8n
+    ports:
+      - "5678:5678"
+    environment:
+      DB_TYPE: postgresdb
+      DB_POSTGRESDB_URL: postgresql://sinqura:uUSSEkJKfyUOqnsk1fpkAGoYEbAEPlvy@dpg-d79v3uedqaus73el71n0-a/sinqura_db
+      N8N_BASIC_AUTH_ACTIVE: "true"
+      N8N_BASIC_AUTH_USER: sinqura
+      N8N_BASIC_AUTH_PASSWORD: S1nqur@04
+      N8N_HOST: "0.0.0.0"
+      N8N_PORT: "5678"
+      WEBHOOK_TUNNEL_URL: "https://sinqura-n8n.onrender.com/"
+    volumes:
+      - n8n_data:/home/node/.n8n
+
+volumes:
+  n8n_data:
